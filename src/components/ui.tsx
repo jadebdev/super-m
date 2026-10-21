@@ -1,9 +1,19 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
-import type { Product, Tint } from "../types";
+import type { Category, Product, Tint } from "../types";
 import { ars, discountPct, priceOf } from "../lib/format";
 import { Link, useRouter } from "../lib/router";
 import { tintOf, useStore } from "../lib/store";
 import { Icon } from "./icons";
+
+/* ---------- Aisle tile: the category photo, or its emoji on the aisle color ---------- */
+
+export function CategoryIcon({ category, className = "" }: { category: Category; className?: string }) {
+  return (
+    <span className={`grid place-items-center overflow-hidden ${className}`} style={{ background: `var(--t-${category.tint})` }} aria-hidden="true">
+      {category.image ? <img src={category.image} alt="" loading="lazy" className="h-full w-full object-cover" /> : category.emoji}
+    </span>
+  );
+}
 
 /* ---------- Product image: a real photo if the store uploaded one, otherwise an aisle-colored tile ---------- */
 

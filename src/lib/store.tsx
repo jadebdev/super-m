@@ -28,6 +28,7 @@ type State = {
   couponApplied: boolean;
   adminUnlocked: boolean;
   photosBackfilled?: boolean;
+  seenSeedIds?: string[];
 };
 
 const initial = (): State => ({
@@ -43,6 +44,7 @@ const initial = (): State => ({
   couponApplied: false,
   adminUnlocked: false,
   photosBackfilled: true,
+  seenSeedIds: seedProducts.map((p) => p.id),
 });
 
 // Catalogs saved before product photos existed get the seed photo once.
@@ -53,12 +55,20 @@ function withSeedPhotos(saved: Partial<State>, s: State): State {
   return { ...s, photosBackfilled: true, products: s.products.map((p) => (p.image ? p : { ...p, image: photo.get(p.id) })) };
 }
 
+// Products added to the seed after a catalog was saved are appended once.
+// Products the store deleted stay deleted, because their ids are already in seenSeedIds.
+function withNewSeedProducts(saved: Partial<State>, s: State): State {
+  const seen = new Set(saved.seenSeedIds ?? (saved.products ?? []).map((p) => p.id));
+  const added = seedProducts.filter((p) => !seen.has(p.id) && !s.products.some((q) => q.id === p.id));
+  return { ...s, seenSeedIds: seedProducts.map((p) => p.id), products: [...added, ...s.products] };
+}
+
 function load(): State {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return initial();
     const saved = JSON.parse(raw) as Partial<State>;
-    return withSeedPhotos(saved, { ...initial(), ...saved, adminUnlocked: false });
+    return withNewSeedProducts(saved, withSeedPhotos(saved, { ...initial(), ...saved, adminUnlocked: false }));
   } catch {
     return initial();
   }

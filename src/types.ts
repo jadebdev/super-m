@@ -5,6 +5,7 @@ export type Category = {
   name: string;
   nameZh: string;
   emoji: string;
+  image?: string; // photo for the aisle tile; the emoji is the fallback
   tint: Tint;
 };
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Icon } from "../../components/icons";
-import { FreeDeliveryBar, ProductCard, SectionTitle } from "../../components/ui";
+import { CategoryIcon, FreeDeliveryBar, ProductCard, SectionTitle } from "../../components/ui";
 import { ZonePicker } from "../../components/ZonePicker";
 import { ars, discountPct } from "../../lib/format";
 import { Link, useRouter } from "../../lib/router";
@@ -35,7 +35,7 @@ export function Home() {
             className="flex h-12 items-center gap-2.5 rounded-full bg-card px-4 text-left text-muted shadow-card"
           >
             <Icon name="search" size={20} className="text-fg" />
-            <span className="truncate">Buscá soja, dumplings, 米粉…</span>
+            <span className="truncate">Buscá leche, pan, yerba, 米粉…</span>
           </button>
         </div>
         <button
@@ -102,9 +102,7 @@ export function Home() {
           <div className="grid grid-cols-4 gap-x-2 gap-y-4">
             {categories.map((c) => (
               <Link key={c.id} to={`/c/${c.id}`} className="flex flex-col items-center gap-1.5 text-center">
-                <span className="grid aspect-square w-full max-w-[76px] place-items-center rounded-full text-[34px]" style={{ background: `var(--t-${c.tint})` }} aria-hidden="true">
-                  {c.emoji}
-                </span>
+                <CategoryIcon category={c} className="aspect-square w-full max-w-[76px] rounded-full text-[34px]" />
                 <span className="text-[12px] leading-tight font-semibold">{c.name}</span>
               </Link>
             ))}

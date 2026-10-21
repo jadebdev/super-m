@@ -3,20 +3,106 @@ import type { Category, Order, Product, Settings, Zone } from "../types";
 // Demo catalog. Prices are examples in ARS; the store edits them in the admin panel.
 
 export const categories: Category[] = [
-  { id: "arroz-fideos", name: "Arroz y fideos", nameZh: "米面", emoji: "🍜", tint: "amber" },
-  { id: "salsas", name: "Salsas y condimentos", nameZh: "调料", emoji: "🫙", tint: "red" },
-  { id: "congelados", name: "Congelados", nameZh: "冷冻", emoji: "🥟", tint: "blue" },
-  { id: "verduras", name: "Verduras asiáticas", nameZh: "蔬菜", emoji: "🥬", tint: "green" },
-  { id: "tofu", name: "Tofu y frescos", nameZh: "豆制品", emoji: "🫘", tint: "cream" },
-  { id: "snacks", name: "Snacks y dulces", nameZh: "零食", emoji: "🍡", tint: "orange" },
-  { id: "bebidas", name: "Bebidas", nameZh: "饮料", emoji: "🧋", tint: "teal" },
-  { id: "hogar", name: "Cocina y hogar", nameZh: "厨具", emoji: "🥢", tint: "purple" },
+  // Everyday aisles
+  { id: "frutas-verduras", name: "Frutas y verduras", nameZh: "果蔬", emoji: "🍎", image: "/products/manzanas.jpg", tint: "green" },
+  { id: "panaderia", name: "Panadería", nameZh: "面包", emoji: "🥖", image: "/products/medialunas.jpg", tint: "amber" },
+  { id: "lacteos", name: "Lácteos y huevos", nameZh: "奶制品", emoji: "🥛", image: "/products/leche.jpg", tint: "blue" },
+  { id: "carnes", name: "Carnes y fiambres", nameZh: "肉类", emoji: "🥩", image: "/products/asado.jpg", tint: "red" },
+  { id: "almacen", name: "Almacén", nameZh: "粮油", emoji: "🥫", image: "/products/fideos-spaghetti.jpg", tint: "orange" },
+  { id: "bebidas", name: "Bebidas", nameZh: "饮料", emoji: "🥤", image: "/products/vino-malbec.jpg", tint: "teal" },
+  { id: "snacks", name: "Snacks y golosinas", nameZh: "零食", emoji: "🍫", image: "/products/papas-fritas.jpg", tint: "orange" },
+  { id: "congelados", name: "Congelados", nameZh: "冷冻", emoji: "🥟", image: "/products/dumplings-cerdo.jpg", tint: "blue" },
+  { id: "limpieza", name: "Limpieza", nameZh: "清洁", emoji: "🧽", image: "/products/detergente.jpg", tint: "teal" },
+  { id: "perfumeria", name: "Perfumería e higiene", nameZh: "个护", emoji: "🧴", image: "/products/shampoo.jpg", tint: "purple" },
+  { id: "mascotas", name: "Mascotas", nameZh: "宠物", emoji: "🐶", image: "/products/alimento-perro.jpg", tint: "cream" },
+  // Asian specialty aisles
+  { id: "arroz-fideos", name: "Arroz y fideos orientales", nameZh: "米面", emoji: "🍜", image: "/products/ramen-x5.jpg", tint: "amber" },
+  { id: "salsas", name: "Salsas y condimentos", nameZh: "调料", emoji: "🌶️", image: "/products/soja-light.jpg", tint: "red" },
+  { id: "verduras", name: "Verduras asiáticas", nameZh: "蔬菜", emoji: "🥬", image: "/products/bok-choy.jpg", tint: "green" },
+  { id: "tofu", name: "Tofu y frescos", nameZh: "豆制品", emoji: "🥡", image: "/products/tofu-firme.jpg", tint: "cream" },
+  { id: "hogar", name: "Cocina y hogar", nameZh: "厨具", emoji: "🥢", image: "/products/wok.jpg", tint: "purple" },
 ];
 
 type P = Omit<Product, "stock"> & { stock?: boolean };
 const p = (x: P): Product => ({ stock: true, ...x });
 
 export const seedProducts: Product[] = [
+  // ---------- Everyday supermarket ----------
+
+  p({ id: "bananas", name: "Bananas", nameZh: "香蕉", categoryId: "frutas-verduras", unit: "1 kg", price: 2200, emoji: "🍌", image: "/products/bananas.jpg", featured: true }),
+  p({ id: "manzanas", name: "Manzanas rojas", nameZh: "红苹果", categoryId: "frutas-verduras", unit: "1 kg", price: 2800, salePrice: 2400, emoji: "🍎", image: "/products/manzanas.jpg" }),
+  p({ id: "papas", name: "Papas", nameZh: "土豆", categoryId: "frutas-verduras", unit: "Bolsa 2 kg", price: 2500, emoji: "🥔", image: "/products/papas.jpg" }),
+  p({ id: "tomates", name: "Tomates redondos", nameZh: "西红柿", categoryId: "frutas-verduras", unit: "1 kg", price: 3000, emoji: "🍅", image: "/products/tomates.jpg" }),
+  p({ id: "cebollas", name: "Cebollas", nameZh: "洋葱", categoryId: "frutas-verduras", unit: "1 kg", price: 1600, emoji: "🧅", image: "/products/cebollas.jpg" }),
+  p({ id: "lechuga", name: "Lechuga", nameZh: "生菜", categoryId: "frutas-verduras", unit: "Por unidad", price: 1500, emoji: "🥬", image: "/products/lechuga.jpg" }),
+  p({ id: "limones", name: "Limones", nameZh: "柠檬", categoryId: "frutas-verduras", unit: "1 kg", price: 2000, emoji: "🍋", image: "/products/limones.jpg" }),
+  p({ id: "zanahorias", name: "Zanahorias", nameZh: "胡萝卜", categoryId: "frutas-verduras", unit: "1 kg", price: 1400, emoji: "🥕", image: "/products/zanahorias.jpg" }),
+
+  p({ id: "pan-frances", name: "Pan francés", nameZh: "法式面包", categoryId: "panaderia", unit: "1 kg", price: 3000, emoji: "🥖", image: "/products/pan-frances.jpg", featured: true, description: "Horneado todas las mañanas. Crocante por fuera, tierno por dentro." }),
+  p({ id: "medialunas", name: "Medialunas de manteca x6", nameZh: "牛角面包", categoryId: "panaderia", unit: "6 u.", price: 3600, emoji: "🥐", image: "/products/medialunas.jpg", featured: true, description: "Las del desayuno y la merienda, con almíbar." }),
+  p({ id: "pan-lactal", name: "Pan lactal blanco", nameZh: "切片面包", categoryId: "panaderia", unit: "550 g", price: 2900, emoji: "🍞", image: "/products/pan-lactal.jpg" }),
+  p({ id: "facturas", name: "Facturas surtidas x6", nameZh: "什锦甜面包", categoryId: "panaderia", unit: "6 u.", price: 4200, emoji: "🥐", image: "/products/facturas.jpg", description: "Vigilantes, cañoncitos y bolas de fraile." }),
+  p({ id: "bizcochitos", name: "Bizcochitos de grasa", nameZh: "猪油饼干", categoryId: "panaderia", unit: "250 g", price: 2200, emoji: "🍪", image: "/products/bizcochitos.jpg", description: "Para acompañar el mate." }),
+
+  p({ id: "leche", name: "Leche entera", nameZh: "全脂牛奶", categoryId: "lacteos", unit: "1 L", price: 1500, emoji: "🥛", image: "/products/leche.jpg", featured: true }),
+  p({ id: "yogur", name: "Yogur bebible de frutilla", nameZh: "草莓酸奶", categoryId: "lacteos", unit: "1 L", price: 2600, emoji: "🥛", image: "/products/yogur.jpg" }),
+  p({ id: "queso-cremoso", name: "Queso cremoso", nameZh: "奶酪", categoryId: "lacteos", unit: "500 g", price: 5800, salePrice: 4990, emoji: "🧀", image: "/products/queso-cremoso.jpg" }),
+  p({ id: "manteca", name: "Manteca", nameZh: "黄油", categoryId: "lacteos", unit: "200 g", price: 2700, emoji: "🧈", image: "/products/manteca.jpg" }),
+  p({ id: "huevos", name: "Huevos blancos x12", nameZh: "鸡蛋", categoryId: "lacteos", unit: "Maple 12 u.", price: 3900, emoji: "🥚", image: "/products/huevos.jpg", featured: true }),
+  p({ id: "dulce-de-leche", name: "Dulce de leche", nameZh: "牛奶酱", categoryId: "lacteos", unit: "400 g", price: 3200, emoji: "🍯", image: "/products/dulce-de-leche.jpg", description: "Clásico argentino para tostadas, panqueques y alfajores." }),
+  p({ id: "crema", name: "Crema de leche", nameZh: "奶油", categoryId: "lacteos", unit: "200 ml", price: 2100, emoji: "🥛", image: "/products/crema.jpg" }),
+
+  p({ id: "asado", name: "Asado de tira", nameZh: "牛肋排", categoryId: "carnes", unit: "1 kg", price: 12900, emoji: "🥩", image: "/products/asado.jpg", featured: true, description: "Corte de novillo para la parrilla del domingo." }),
+  p({ id: "milanesas", name: "Milanesas de carne", nameZh: "炸牛排", categoryId: "carnes", unit: "1 kg", price: 11500, salePrice: 9900, emoji: "🥩", image: "/products/milanesas.jpg", description: "Rebozadas y listas para freír o al horno." }),
+  p({ id: "pollo", name: "Pollo entero", nameZh: "整鸡", categoryId: "carnes", unit: "Aprox. 2,5 kg", price: 9500, emoji: "🍗", image: "/products/pollo.jpg" }),
+  p({ id: "jamon", name: "Jamón cocido", nameZh: "火腿", categoryId: "carnes", unit: "200 g", price: 3500, emoji: "🥓", image: "/products/jamon.jpg" }),
+  p({ id: "chorizo", name: "Chorizos parrilleros x4", nameZh: "香肠", categoryId: "carnes", unit: "Aprox. 500 g", price: 5200, emoji: "🌭", image: "/products/chorizo.jpg" }),
+
+  p({ id: "fideos-spaghetti", name: "Fideos spaghetti", nameZh: "意大利面", categoryId: "almacen", unit: "500 g", price: 1500, emoji: "🍝", image: "/products/fideos-spaghetti.jpg" }),
+  p({ id: "arroz-largo", name: "Arroz largo fino", nameZh: "长粒米", categoryId: "almacen", unit: "1 kg", price: 1900, emoji: "🍚", image: "/products/arroz-largo.jpg" }),
+  p({ id: "aceite-girasol", name: "Aceite de girasol", nameZh: "葵花籽油", categoryId: "almacen", unit: "1,5 L", price: 4200, salePrice: 3690, emoji: "🌻", image: "/products/aceite-girasol.jpg" }),
+  p({ id: "harina-trigo", name: "Harina de trigo 000", nameZh: "面粉", categoryId: "almacen", unit: "1 kg", price: 1100, emoji: "🌾", image: "/products/harina-trigo.jpg" }),
+  p({ id: "tomate-triturado", name: "Tomate triturado", nameZh: "番茄碎", categoryId: "almacen", unit: "520 g", price: 1300, emoji: "🥫", image: "/products/tomate-triturado.jpg" }),
+  p({ id: "yerba", name: "Yerba mate", nameZh: "马黛茶", categoryId: "almacen", unit: "1 kg", price: 5500, emoji: "🧉", image: "/products/yerba.jpg", featured: true, description: "Con palo, sabor intenso. La de todos los días." }),
+  p({ id: "azucar", name: "Azúcar", nameZh: "白糖", categoryId: "almacen", unit: "1 kg", price: 1300, emoji: "🍬", image: "/products/azucar.jpg" }),
+  p({ id: "cafe", name: "Café molido", nameZh: "咖啡粉", categoryId: "almacen", unit: "250 g", price: 4800, emoji: "☕", image: "/products/cafe.jpg" }),
+
+  p({ id: "gaseosa-cola", name: "Gaseosa cola", nameZh: "可乐", categoryId: "bebidas", unit: "2,25 L", price: 3900, salePrice: 3300, emoji: "🥤", image: "/products/gaseosa-cola.jpg", featured: true }),
+  p({ id: "agua-mineral", name: "Agua mineral sin gas", nameZh: "矿泉水", categoryId: "bebidas", unit: "2 L", price: 1400, emoji: "💧", image: "/products/agua-mineral.jpg" }),
+  p({ id: "cerveza", name: "Cerveza rubia", nameZh: "啤酒", categoryId: "bebidas", unit: "1 L", price: 2900, emoji: "🍺", image: "/products/cerveza.jpg", description: "Venta solo a mayores de 18 años." }),
+  p({ id: "vino-malbec", name: "Vino tinto Malbec", nameZh: "马尔贝克红酒", categoryId: "bebidas", unit: "750 ml", price: 6500, emoji: "🍷", image: "/products/vino-malbec.jpg", description: "Malbec de Mendoza. Venta solo a mayores de 18 años." }),
+  p({ id: "jugo-naranja", name: "Jugo de naranja", nameZh: "橙汁", categoryId: "bebidas", unit: "1 L", price: 2400, emoji: "🧃", image: "/products/jugo-naranja.jpg" }),
+
+  p({ id: "papas-fritas", name: "Papas fritas clásicas", nameZh: "薯片", categoryId: "snacks", unit: "150 g", price: 2600, emoji: "🥔", image: "/products/papas-fritas.jpg", featured: true }),
+  p({ id: "mani", name: "Maní salado", nameZh: "咸花生", categoryId: "snacks", unit: "200 g", price: 1800, emoji: "🥜", image: "/products/mani.jpg" }),
+  p({ id: "alfajores", name: "Alfajores de chocolate x6", nameZh: "阿根廷夹心饼", categoryId: "snacks", unit: "6 u.", price: 4500, salePrice: 3900, emoji: "🍫", image: "/products/alfajores.jpg", description: "Rellenos de dulce de leche y bañados en chocolate." }),
+  p({ id: "chocolate", name: "Chocolate con leche", nameZh: "牛奶巧克力", categoryId: "snacks", unit: "100 g", price: 2900, emoji: "🍫", image: "/products/chocolate.jpg" }),
+  p({ id: "galletitas", name: "Galletitas dulces surtidas", nameZh: "甜饼干", categoryId: "snacks", unit: "400 g", price: 2300, emoji: "🍪", image: "/products/galletitas.jpg" }),
+
+  p({ id: "mayonesa", name: "Mayonesa", nameZh: "蛋黄酱", categoryId: "salsas", unit: "500 g", price: 2800, emoji: "🥚", image: "/products/mayonesa.jpg" }),
+  p({ id: "ketchup", name: "Ketchup", nameZh: "番茄酱", categoryId: "salsas", unit: "500 g", price: 2600, emoji: "🍅", image: "/products/ketchup.jpg" }),
+
+  p({ id: "hamburguesas", name: "Hamburguesas de carne x4", nameZh: "汉堡肉饼", categoryId: "congelados", unit: "4 u.", price: 4900, emoji: "🍔", image: "/products/hamburguesas.jpg" }),
+  p({ id: "papas-congeladas", name: "Papas bastón congeladas", nameZh: "冷冻薯条", categoryId: "congelados", unit: "1 kg", price: 4300, emoji: "🍟", image: "/products/papas-congeladas.jpg" }),
+  p({ id: "helado", name: "Helado de dulce de leche", nameZh: "冰淇淋", categoryId: "congelados", unit: "1 kg", price: 8900, salePrice: 7500, emoji: "🍨", image: "/products/helado.jpg" }),
+  p({ id: "empanadas", name: "Empanadas de carne x12", nameZh: "阿根廷馅饼", categoryId: "congelados", unit: "12 u.", price: 9600, emoji: "🥟", image: "/products/empanadas.jpg", description: "Listas para el horno: 20 minutos a 200 °C." }),
+
+  p({ id: "detergente", name: "Detergente lavavajillas", nameZh: "洗洁精", categoryId: "limpieza", unit: "750 ml", price: 2200, emoji: "🧴", image: "/products/detergente.jpg" }),
+  p({ id: "lavandina", name: "Lavandina", nameZh: "漂白水", categoryId: "limpieza", unit: "2 L", price: 1500, emoji: "🧴", image: "/products/lavandina.jpg" }),
+  p({ id: "jabon-polvo", name: "Jabón en polvo para ropa", nameZh: "洗衣粉", categoryId: "limpieza", unit: "3 kg", price: 9000, salePrice: 7900, emoji: "🧺", image: "/products/jabon-polvo.jpg" }),
+  p({ id: "papel-higienico", name: "Papel higiénico x4", nameZh: "卫生纸", categoryId: "limpieza", unit: "4 rollos 30 m", price: 2800, emoji: "🧻", image: "/products/papel-higienico.jpg", featured: true }),
+  p({ id: "esponjas", name: "Esponjas de cocina x3", nameZh: "海绵", categoryId: "limpieza", unit: "3 u.", price: 1600, emoji: "🧽", image: "/products/esponjas.jpg" }),
+
+  p({ id: "shampoo", name: "Shampoo", nameZh: "洗发水", categoryId: "perfumeria", unit: "400 ml", price: 3500, emoji: "🧴", image: "/products/shampoo.jpg" }),
+  p({ id: "pasta-dental", name: "Pasta dental", nameZh: "牙膏", categoryId: "perfumeria", unit: "90 g", price: 2200, emoji: "🦷", image: "/products/pasta-dental.jpg" }),
+  p({ id: "jabon-tocador", name: "Jabón de tocador x3", nameZh: "香皂", categoryId: "perfumeria", unit: "3 u.", price: 2400, emoji: "🧼", image: "/products/jabon-tocador.jpg" }),
+  p({ id: "desodorante", name: "Desodorante en aerosol", nameZh: "止汗喷雾", categoryId: "perfumeria", unit: "150 ml", price: 3300, emoji: "🧴", image: "/products/desodorante.jpg" }),
+
+  p({ id: "alimento-perro", name: "Alimento para perros adultos", nameZh: "狗粮", categoryId: "mascotas", unit: "3 kg", price: 9500, emoji: "🐶", image: "/products/alimento-perro.jpg" }),
+  p({ id: "alimento-gato", name: "Alimento para gatos", nameZh: "猫粮", categoryId: "mascotas", unit: "1,5 kg", price: 6800, emoji: "🐱", image: "/products/alimento-gato.jpg" }),
+
+  // ---------- Asian specialty ----------
+
   // Arroz y fideos
   p({ id: "arroz-jazmin-5kg", name: "Arroz jazmín 5 kg", nameZh: "茉莉香米", categoryId: "arroz-fideos", unit: "Bolsa 5 kg", price: 14900, salePrice: 12900, emoji: "🍚", image: "/products/arroz-jazmin-5kg.jpg", featured: true, description: "Arroz de grano largo y aroma suave. El de todos los días para acompañar salteados y curry." }),
   p({ id: "arroz-glutinoso", name: "Arroz glutinoso", nameZh: "糯米", categoryId: "arroz-fideos", unit: "1 kg", price: 4200, emoji: "🍙", image: "/products/arroz-glutinoso.jpg", description: "Para zongzi, mochi y arroz pegajoso al vapor." }),

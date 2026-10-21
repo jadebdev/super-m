@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Icon } from "../../components/icons";
-import { EmptyState, PageHeader, ProductCard, inputClass } from "../../components/ui";
+import { CategoryIcon, EmptyState, PageHeader, ProductCard, inputClass } from "../../components/ui";
 import { discountPct, normalize, priceOf } from "../../lib/format";
 import { Link, useRouter } from "../../lib/router";
 import { useStore } from "../../lib/store";
@@ -24,9 +24,7 @@ export function Categories() {
           const n = products.filter((p) => p.categoryId === c.id).length;
           return (
             <Link key={c.id} to={`/c/${c.id}`} className="flex items-center gap-4 rounded-2xl border border-line bg-card p-3">
-              <span className="grid h-16 w-16 shrink-0 place-items-center rounded-xl text-3xl" style={{ background: `var(--t-${c.tint})` }} aria-hidden="true">
-                {c.emoji}
-              </span>
+              <CategoryIcon category={c} className="h-16 w-16 shrink-0 rounded-xl text-3xl" />
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline gap-2">
                   <span className="font-display text-lg font-extrabold">{c.name}</span>
@@ -96,7 +94,7 @@ export function CategoryPage({ id }: { id: string }) {
   );
 }
 
-const popular = ["soja", "dumplings", "arroz", "tofu", "ramen", "wok", "té", "mochi"];
+const popular = ["leche", "pan", "yerba", "asado", "cerveza", "papel higiénico", "dumplings", "soja"];
 
 export function SearchPage() {
   const { products, categories } = useStore();
