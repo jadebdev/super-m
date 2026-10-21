@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+/*
+  Super M design tokens
+  Layout: phone-width shop column (max 480px) with a red header band and a bottom tab bar;
+          the admin panel uses a wider desk layout.
+  Color: lucky red for brand and actions, gold for deals, pastel tiles per aisle.
+  Type: Bricolage Grotesque for display and prices, Figtree for everything else.
+*/
+:root {
+  --bg: #ffffff;
+  --surface: #f7f3f2;
+  --card: #ffffff;
+  --fg: #1e1716;
+  --muted: #6e625f;
+  --line: #ece4e2;
+  --red: #d6211f;
+  --red-ink: #ad1512;
+  --red-deep: #ad1512;
+  --red-soft: #fde9e7;
+  --on-red: #ffffff;
+  --gold: #f5b301;
+  --gold-ink: #7a4f00;
+  --gold-soft: #fff4d1;
+  --green: #17864a;
+  --green-soft: #e3f5ea;
+  --blue: #2563c9;
+  --blue-soft: #e5eefc;
+  --shadow: 0 1px 2px rgb(60 20 15 / 0.06), 0 6px 20px rgb(60 20 15 / 0.06);
+
+  --t-amber: #ffefc7;
+  --t-red: #ffe1dc;
+  --t-blue: #dcebff;
+  --t-green: #dff3dc;
+  --t-cream: #f5efe4;
+  --t-orange: #ffe4cc;
+  --t-teal: #d6f3ef;
+  --t-purple: #ece3fb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151110;
+    --surface: #1d1817;
+    --card: #241e1d;
+    --fg: #f5efed;
+    --muted: #ab9d99;
+    --line: #362d2b;
+    --red: #ec3a33;
+    --red-ink: #ff7a70;
+    --red-deep: #a51a16;
+    --red-soft: #3b1714;
+    --on-red: #ffffff;
+    --gold: #f7c443;
+    --gold-ink: #f7c443;
+    --gold-soft: #3a2d0c;
+    --green: #4cc483;
+    --green-soft: #12301f;
+    --blue: #79a7ff;
+    --blue-soft: #16243d;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 20px rgb(0 0 0 / 0.25);
+    --t-amber: #3a2f14;
+    --t-red: #3c1d1a;
+    --t-blue: #172a44;
+    --t-green: #1a3220;
+    --t-cream: #312a20;
+    --t-orange: #3d2614;
+    --t-teal: #133432;
+    --t-purple: #2a2140;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151110;
+  --surface: #1d1817;
+  --card: #241e1d;
+  --fg: #f5efed;
+  --muted: #ab9d99;
+  --line: #362d2b;
+  --red: #ec3a33;
+  --red-ink: #ff7a70;
+  --red-deep: #a51a16;
+  --red-soft: #3b1714;
+  --on-red: #ffffff;
+  --gold: #f7c443;
+  --gold-ink: #f7c443;
+  --gold-soft: #3a2d0c;
+  --green: #4cc483;
+  --green-soft: #12301f;
+  --blue: #79a7ff;
+  --blue-soft: #16243d;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 20px rgb(0 0 0 / 0.25);
+  --t-amber: #3a2f14;
+  --t-red: #3c1d1a;
+  --t-blue: #172a44;
+  --t-green: #1a3220;
+  --t-cream: #312a20;
+  --t-orange: #3d2614;
+  --t-teal: #133432;
+  --t-purple: #2a2140;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-red: var(--red);
+  --color-red-ink: var(--red-ink);
+  --color-red-deep: var(--red-deep);
+  --color-red-soft: var(--red-soft);
+  --color-on-red: var(--on-red);
+  --color-gold: var(--gold);
+  --color-gold-ink: var(--gold-ink);
+  --color-gold-soft: var(--gold-soft);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --font-display: "Bricolage Grotesque", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --shadow-card: var(--shadow);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+/* paints the phone status-bar area in brand red */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 40;
+  background: var(--red);
+}
+h1, h2, h3 {
+  text-wrap: balance;
+}
+.gutter {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.num {
+  font-variant-numeric: tabular-nums;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.bottom-safe {
+  bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+}
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+.pop {
+  animation: pop 0.35s ease-out;
+}
+@keyframes rise {
+  from { transform: translateY(16px); opacity: 0.4; }
+  to { transform: none; opacity: 1; }
+}
+.rise {
+  animation: rise 0.25s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pop, .rise { animation: none; }
+  html { scroll-behavior: auto; }
+}

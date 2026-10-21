@@ -1,0 +1,10 @@
+{
+  "name": "Super M · Supermercado chino",
+  "short_name": "Super M",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d6211f",
+  "lang": "es-AR",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
