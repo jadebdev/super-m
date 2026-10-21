@@ -18,58 +18,58 @@ const p = (x: P): Product => ({ stock: true, ...x });
 
 export const seedProducts: Product[] = [
   // Arroz y fideos
-  p({ id: "arroz-jazmin-5kg", name: "Arroz jazmín 5 kg", nameZh: "茉莉香米", categoryId: "arroz-fideos", unit: "Bolsa 5 kg", price: 14900, salePrice: 12900, emoji: "🍚", featured: true, description: "Arroz de grano largo y aroma suave. El de todos los días para acompañar salteados y curry." }),
-  p({ id: "arroz-glutinoso", name: "Arroz glutinoso", nameZh: "糯米", categoryId: "arroz-fideos", unit: "1 kg", price: 4200, emoji: "🍙", description: "Para zongzi, mochi y arroz pegajoso al vapor." }),
-  p({ id: "fideos-arroz", name: "Fideos de arroz finos", nameZh: "米粉", categoryId: "arroz-fideos", unit: "400 g", price: 2650, emoji: "🍜", description: "Se hidratan en 5 minutos. Ideales para salteados y sopas." }),
-  p({ id: "ramen-x5", name: "Ramen instantáneo x5", nameZh: "方便面", categoryId: "arroz-fideos", unit: "Pack 5 u.", price: 5400, salePrice: 4590, emoji: "🍜", featured: true, description: "Sabor carne picante. Pack familiar de 5 unidades." }),
-  p({ id: "udon-fresco", name: "Fideos udon frescos", nameZh: "乌冬面", categoryId: "arroz-fideos", unit: "200 g", price: 1980, emoji: "🍲", description: "Fideos gruesos de trigo, listos en 2 minutos." }),
-  p({ id: "harina-arroz", name: "Harina de arroz", nameZh: "粘米粉", categoryId: "arroz-fideos", unit: "500 g", price: 2300, emoji: "🌾" }),
+  p({ id: "arroz-jazmin-5kg", name: "Arroz jazmín 5 kg", nameZh: "茉莉香米", categoryId: "arroz-fideos", unit: "Bolsa 5 kg", price: 14900, salePrice: 12900, emoji: "🍚", image: "/products/arroz-jazmin-5kg.jpg", featured: true, description: "Arroz de grano largo y aroma suave. El de todos los días para acompañar salteados y curry." }),
+  p({ id: "arroz-glutinoso", name: "Arroz glutinoso", nameZh: "糯米", categoryId: "arroz-fideos", unit: "1 kg", price: 4200, emoji: "🍙", image: "/products/arroz-glutinoso.jpg", description: "Para zongzi, mochi y arroz pegajoso al vapor." }),
+  p({ id: "fideos-arroz", name: "Fideos de arroz finos", nameZh: "米粉", categoryId: "arroz-fideos", unit: "400 g", price: 2650, emoji: "🍜", image: "/products/fideos-arroz.jpg", description: "Se hidratan en 5 minutos. Ideales para salteados y sopas." }),
+  p({ id: "ramen-x5", name: "Ramen instantáneo x5", nameZh: "方便面", categoryId: "arroz-fideos", unit: "Pack 5 u.", price: 5400, salePrice: 4590, emoji: "🍜", image: "/products/ramen-x5.jpg", featured: true, description: "Sabor carne picante. Pack familiar de 5 unidades." }),
+  p({ id: "udon-fresco", name: "Fideos udon frescos", nameZh: "乌冬面", categoryId: "arroz-fideos", unit: "200 g", price: 1980, emoji: "🍲", image: "/products/udon-fresco.jpg", description: "Fideos gruesos de trigo, listos en 2 minutos." }),
+  p({ id: "harina-arroz", name: "Harina de arroz", nameZh: "粘米粉", categoryId: "arroz-fideos", unit: "500 g", price: 2300, emoji: "🌾", image: "/products/harina-arroz.jpg" }),
 
   // Salsas y condimentos
-  p({ id: "soja-light", name: "Salsa de soja light", nameZh: "生抽", categoryId: "salsas", unit: "500 ml", price: 3100, emoji: "🫙", featured: true, description: "Soja clara para condimentar y marinar. Más salada y menos oscura que la soja oscura." }),
-  p({ id: "soja-oscura", name: "Salsa de soja oscura", nameZh: "老抽", categoryId: "salsas", unit: "500 ml", price: 3300, emoji: "🫙", description: "Da color y un dulzor suave a carnes estofadas." }),
-  p({ id: "salsa-ostras", name: "Salsa de ostras", nameZh: "蚝油", categoryId: "salsas", unit: "510 g", price: 4500, salePrice: 3900, emoji: "🦪", description: "Clásica para verduras salteadas y carne con brócoli." }),
-  p({ id: "aceite-sesamo", name: "Aceite de sésamo", nameZh: "芝麻油", categoryId: "salsas", unit: "250 ml", price: 5800, emoji: "🫗", description: "Tostado y muy aromático. Unas gotas al final de la cocción." }),
-  p({ id: "vinagre-negro", name: "Vinagre negro", nameZh: "镇江香醋", categoryId: "salsas", unit: "550 ml", price: 3700, emoji: "🍶", description: "Vinagre de arroz añejado. Perfecto para mojar dumplings con jengibre." }),
-  p({ id: "doubanjiang", name: "Pasta de habas picante", nameZh: "郫县豆瓣酱", categoryId: "salsas", unit: "500 g", price: 4900, emoji: "🌶️", description: "La base del mapo tofu y de la cocina de Sichuan." }),
-  p({ id: "chili-crisp", name: "Aceite de chile crocante", nameZh: "辣椒油", categoryId: "salsas", unit: "210 g", price: 5200, emoji: "🌶️", featured: true, description: "Chile, ajo y maní crocantes en aceite. Va con todo." }),
+  p({ id: "soja-light", name: "Salsa de soja light", nameZh: "生抽", categoryId: "salsas", unit: "500 ml", price: 3100, emoji: "🫙", image: "/products/soja-light.jpg", featured: true, description: "Soja clara para condimentar y marinar. Más salada y menos oscura que la soja oscura." }),
+  p({ id: "soja-oscura", name: "Salsa de soja oscura", nameZh: "老抽", categoryId: "salsas", unit: "500 ml", price: 3300, emoji: "🫙", image: "/products/soja-oscura.jpg", description: "Da color y un dulzor suave a carnes estofadas." }),
+  p({ id: "salsa-ostras", name: "Salsa de ostras", nameZh: "蚝油", categoryId: "salsas", unit: "510 g", price: 4500, salePrice: 3900, emoji: "🦪", image: "/products/salsa-ostras.jpg", description: "Clásica para verduras salteadas y carne con brócoli." }),
+  p({ id: "aceite-sesamo", name: "Aceite de sésamo", nameZh: "芝麻油", categoryId: "salsas", unit: "250 ml", price: 5800, emoji: "🫗", image: "/products/aceite-sesamo.jpg", description: "Tostado y muy aromático. Unas gotas al final de la cocción." }),
+  p({ id: "vinagre-negro", name: "Vinagre negro", nameZh: "镇江香醋", categoryId: "salsas", unit: "550 ml", price: 3700, emoji: "🍶", image: "/products/vinagre-negro.jpg", description: "Vinagre de arroz añejado. Perfecto para mojar dumplings con jengibre." }),
+  p({ id: "doubanjiang", name: "Pasta de habas picante", nameZh: "郫县豆瓣酱", categoryId: "salsas", unit: "500 g", price: 4900, emoji: "🌶️", image: "/products/doubanjiang.jpg", description: "La base del mapo tofu y de la cocina de Sichuan." }),
+  p({ id: "chili-crisp", name: "Aceite de chile crocante", nameZh: "辣椒油", categoryId: "salsas", unit: "210 g", price: 5200, emoji: "🌶️", image: "/products/chili-crisp.jpg", featured: true, description: "Chile, ajo y maní crocantes en aceite. Va con todo." }),
 
   // Congelados
-  p({ id: "dumplings-cerdo", name: "Dumplings de cerdo y repollo x20", nameZh: "猪肉白菜饺子", categoryId: "congelados", unit: "Bandeja 20 u.", price: 6900, salePrice: 5900, emoji: "🥟", featured: true, description: "Hechos a mano. Hervilos 6 minutos o dorálos a la plancha." }),
-  p({ id: "gyozas-verdura", name: "Gyozas de verdura x20", nameZh: "素饺子", categoryId: "congelados", unit: "Bandeja 20 u.", price: 6500, emoji: "🥟", description: "Relleno de repollo, hongos y verdeo. Aptas vegetarianos." }),
-  p({ id: "bao-cerdo", name: "Bao de cerdo agridulce x6", nameZh: "叉烧包", categoryId: "congelados", unit: "6 u.", price: 7200, emoji: "🍘", description: "Pancitos al vapor rellenos de cerdo char siu. 10 minutos de vaporera." }),
-  p({ id: "langostinos", name: "Langostinos pelados", nameZh: "虾仁", categoryId: "congelados", unit: "400 g", price: 11900, emoji: "🦐" }),
-  p({ id: "bolitas-pescado", name: "Bolitas de pescado", nameZh: "鱼丸", categoryId: "congelados", unit: "500 g", price: 5400, emoji: "🍢", description: "Para hot pot y sopas de fideos." }),
+  p({ id: "dumplings-cerdo", name: "Dumplings de cerdo y repollo x20", nameZh: "猪肉白菜饺子", categoryId: "congelados", unit: "Bandeja 20 u.", price: 6900, salePrice: 5900, emoji: "🥟", image: "/products/dumplings-cerdo.jpg", featured: true, description: "Hechos a mano. Hervilos 6 minutos o dorálos a la plancha." }),
+  p({ id: "gyozas-verdura", name: "Gyozas de verdura x20", nameZh: "素饺子", categoryId: "congelados", unit: "Bandeja 20 u.", price: 6500, emoji: "🥟", image: "/products/gyozas-verdura.jpg", description: "Relleno de repollo, hongos y verdeo. Aptas vegetarianos." }),
+  p({ id: "bao-cerdo", name: "Bao de cerdo agridulce x6", nameZh: "叉烧包", categoryId: "congelados", unit: "6 u.", price: 7200, emoji: "🍘", image: "/products/bao-cerdo.jpg", description: "Pancitos al vapor rellenos de cerdo char siu. 10 minutos de vaporera." }),
+  p({ id: "langostinos", name: "Langostinos pelados", nameZh: "虾仁", categoryId: "congelados", unit: "400 g", price: 11900, emoji: "🦐", image: "/products/langostinos.jpg" }),
+  p({ id: "bolitas-pescado", name: "Bolitas de pescado", nameZh: "鱼丸", categoryId: "congelados", unit: "500 g", price: 5400, emoji: "🍢", image: "/products/bolitas-pescado.jpg", description: "Para hot pot y sopas de fideos." }),
 
   // Verduras
-  p({ id: "bok-choy", name: "Bok choy", nameZh: "小白菜", categoryId: "verduras", unit: "500 g", price: 1900, emoji: "🥬", description: "Fresco del día. Salteado con ajo en 3 minutos." }),
-  p({ id: "repollo-chino", name: "Repollo chino", nameZh: "大白菜", categoryId: "verduras", unit: "Por unidad", price: 2400, emoji: "🥬" }),
-  p({ id: "jengibre", name: "Jengibre fresco", nameZh: "生姜", categoryId: "verduras", unit: "250 g", price: 1600, emoji: "🫚" }),
-  p({ id: "shiitake", name: "Hongos shiitake", nameZh: "香菇", categoryId: "verduras", unit: "200 g", price: 3900, emoji: "🍄", stock: false }),
-  p({ id: "verdeo", name: "Cebolla de verdeo", nameZh: "葱", categoryId: "verduras", unit: "Atado", price: 900, emoji: "🧅" }),
+  p({ id: "bok-choy", name: "Bok choy", nameZh: "小白菜", categoryId: "verduras", unit: "500 g", price: 1900, emoji: "🥬", image: "/products/bok-choy.jpg", description: "Fresco del día. Salteado con ajo en 3 minutos." }),
+  p({ id: "repollo-chino", name: "Repollo chino", nameZh: "大白菜", categoryId: "verduras", unit: "Por unidad", price: 2400, emoji: "🥬", image: "/products/repollo-chino.jpg" }),
+  p({ id: "jengibre", name: "Jengibre fresco", nameZh: "生姜", categoryId: "verduras", unit: "250 g", price: 1600, emoji: "🫚", image: "/products/jengibre.jpg" }),
+  p({ id: "shiitake", name: "Hongos shiitake", nameZh: "香菇", categoryId: "verduras", unit: "200 g", price: 3900, emoji: "🍄", image: "/products/shiitake.jpg", stock: false }),
+  p({ id: "verdeo", name: "Cebolla de verdeo", nameZh: "葱", categoryId: "verduras", unit: "Atado", price: 900, emoji: "🧅", image: "/products/verdeo.jpg" }),
 
   // Tofu y frescos
-  p({ id: "tofu-firme", name: "Tofu firme", nameZh: "老豆腐", categoryId: "tofu", unit: "400 g", price: 2200, emoji: "🧈", featured: true, description: "Elaborado en Buenos Aires. Ideal para saltear o mapo tofu." }),
-  p({ id: "leche-soja", name: "Leche de soja", nameZh: "豆浆", categoryId: "tofu", unit: "1 L", price: 2100, emoji: "🥛" }),
-  p({ id: "kimchi", name: "Kimchi de repollo", nameZh: "泡菜", categoryId: "tofu", unit: "400 g", price: 4800, emoji: "🥗" }),
+  p({ id: "tofu-firme", name: "Tofu firme", nameZh: "老豆腐", categoryId: "tofu", unit: "400 g", price: 2200, emoji: "🧈", image: "/products/tofu-firme.jpg", featured: true, description: "Elaborado en Buenos Aires. Ideal para saltear o mapo tofu." }),
+  p({ id: "leche-soja", name: "Leche de soja", nameZh: "豆浆", categoryId: "tofu", unit: "1 L", price: 2100, emoji: "🥛", image: "/products/leche-soja.jpg" }),
+  p({ id: "kimchi", name: "Kimchi de repollo", nameZh: "泡菜", categoryId: "tofu", unit: "400 g", price: 4800, emoji: "🥗", image: "/products/kimchi.jpg" }),
 
   // Snacks y dulces
-  p({ id: "galletas-arroz", name: "Galletitas de arroz", nameZh: "雪饼", categoryId: "snacks", unit: "150 g", price: 2400, emoji: "🍘" }),
-  p({ id: "palitos-choco", name: "Palitos de chocolate", nameZh: "巧克力棒", categoryId: "snacks", unit: "40 g", price: 1500, emoji: "🍫" }),
-  p({ id: "algas", name: "Algas tostadas x10", nameZh: "海苔", categoryId: "snacks", unit: "Pack 10 u.", price: 3200, salePrice: 2700, emoji: "🍙" }),
-  p({ id: "caramelos-leche", name: "Caramelos de leche", nameZh: "奶糖", categoryId: "snacks", unit: "180 g", price: 2900, emoji: "🍬" }),
-  p({ id: "mochi", name: "Mochi de poroto rojo x6", nameZh: "红豆麻薯", categoryId: "snacks", unit: "6 u.", price: 3600, emoji: "🍡", featured: true }),
+  p({ id: "galletas-arroz", name: "Galletitas de arroz", nameZh: "雪饼", categoryId: "snacks", unit: "150 g", price: 2400, emoji: "🍘", image: "/products/galletas-arroz.jpg" }),
+  p({ id: "palitos-choco", name: "Palitos de chocolate", nameZh: "巧克力棒", categoryId: "snacks", unit: "40 g", price: 1500, emoji: "🍫", image: "/products/palitos-choco.jpg" }),
+  p({ id: "algas", name: "Algas tostadas x10", nameZh: "海苔", categoryId: "snacks", unit: "Pack 10 u.", price: 3200, salePrice: 2700, emoji: "🍙", image: "/products/algas.jpg" }),
+  p({ id: "caramelos-leche", name: "Caramelos de leche", nameZh: "奶糖", categoryId: "snacks", unit: "180 g", price: 2900, emoji: "🍬", image: "/products/caramelos-leche.jpg" }),
+  p({ id: "mochi", name: "Mochi de poroto rojo x6", nameZh: "红豆麻薯", categoryId: "snacks", unit: "6 u.", price: 3600, emoji: "🍡", image: "/products/mochi.jpg", featured: true }),
 
   // Bebidas
-  p({ id: "te-taro", name: "Té con leche de taro", nameZh: "芋头奶茶", categoryId: "bebidas", unit: "500 ml", price: 2300, emoji: "🧋", featured: true }),
-  p({ id: "jugo-lichi", name: "Jugo de lichi", nameZh: "荔枝汁", categoryId: "bebidas", unit: "1 L", price: 2800, salePrice: 2350, emoji: "🧃" }),
-  p({ id: "te-jazmin", name: "Té verde jazmín", nameZh: "茉莉绿茶", categoryId: "bebidas", unit: "500 ml", price: 1800, emoji: "🍵" }),
-  p({ id: "bebida-coco", name: "Bebida de coco", nameZh: "椰汁", categoryId: "bebidas", unit: "330 ml", price: 1700, emoji: "🥥" }),
+  p({ id: "te-taro", name: "Té con leche de taro", nameZh: "芋头奶茶", categoryId: "bebidas", unit: "500 ml", price: 2300, emoji: "🧋", image: "/products/te-taro.jpg", featured: true }),
+  p({ id: "jugo-lichi", name: "Jugo de lichi", nameZh: "荔枝汁", categoryId: "bebidas", unit: "1 L", price: 2800, salePrice: 2350, emoji: "🧃", image: "/products/jugo-lichi.jpg" }),
+  p({ id: "te-jazmin", name: "Té verde jazmín", nameZh: "茉莉绿茶", categoryId: "bebidas", unit: "500 ml", price: 1800, emoji: "🍵", image: "/products/te-jazmin.jpg" }),
+  p({ id: "bebida-coco", name: "Bebida de coco", nameZh: "椰汁", categoryId: "bebidas", unit: "330 ml", price: 1700, emoji: "🥥", image: "/products/bebida-coco.jpg" }),
 
   // Cocina y hogar
-  p({ id: "palitos-bambu", name: "Palitos de bambú x10 pares", nameZh: "竹筷", categoryId: "hogar", unit: "10 pares", price: 2500, emoji: "🥢" }),
-  p({ id: "wok", name: "Wok de acero al carbono 32 cm", nameZh: "炒锅", categoryId: "hogar", unit: "Unidad", price: 32900, salePrice: 27900, emoji: "🍳", description: "Curalo una vez y te dura años. Apto cocina a gas." }),
-  p({ id: "vaporera", name: "Vaporera de bambú 25 cm", nameZh: "竹蒸笼", categoryId: "hogar", unit: "2 pisos + tapa", price: 18900, emoji: "🧺" }),
+  p({ id: "palitos-bambu", name: "Palitos de bambú x10 pares", nameZh: "竹筷", categoryId: "hogar", unit: "10 pares", price: 2500, emoji: "🥢", image: "/products/palitos-bambu.jpg" }),
+  p({ id: "wok", name: "Wok de acero al carbono 32 cm", nameZh: "炒锅", categoryId: "hogar", unit: "Unidad", price: 32900, salePrice: 27900, emoji: "🍳", image: "/products/wok.jpg", description: "Curalo una vez y te dura años. Apto cocina a gas." }),
+  p({ id: "vaporera", name: "Vaporera de bambú 25 cm", nameZh: "竹蒸笼", categoryId: "hogar", unit: "2 pisos + tapa", price: 18900, emoji: "🧺", image: "/products/vaporera.jpg" }),
 ];
 
 export const seedZones: Zone[] = [

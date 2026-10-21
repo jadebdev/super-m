@@ -27,6 +27,7 @@ type State = {
   myOrderIds: string[];
   couponApplied: boolean;
   adminUnlocked: boolean;
+  seedPhotos?: boolean;
 };
 
 const initial = (): State => ({
@@ -41,13 +42,22 @@ const initial = (): State => ({
   myOrderIds: [],
   couponApplied: false,
   adminUnlocked: false,
+  seedPhotos: true,
 });
+
+// Catalogs saved before product photos existed get the seed photo once.
+// After that the flag is set, so a photo the store removed stays removed.
+function withSeedPhotos(s: State): State {
+  if (s.seedPhotos) return s;
+  const photo = new Map(seedProducts.map((p) => [p.id, p.image]));
+  return { ...s, seedPhotos: true, products: s.products.map((p) => (p.image ? p : { ...p, image: photo.get(p.id) })) };
+}
 
 function load(): State {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return initial();
-    return { ...initial(), ...JSON.parse(raw), adminUnlocked: false };
+    return withSeedPhotos({ ...initial(), ...JSON.parse(raw), adminUnlocked: false });
   } catch {
     return initial();
   }

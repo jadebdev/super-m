@@ -249,6 +249,7 @@ export function Account() {
           ) : (
             <Button variant="ghost" onClick={() => setConfirmReset(true)}>Reiniciar datos de la demo</Button>
           )}
+          <Button variant="ghost" onClick={() => navigate("/creditos")}>Créditos de fotos</Button>
         </div>
       </div>
     </>

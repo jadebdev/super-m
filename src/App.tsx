@@ -7,6 +7,7 @@ import { Admin } from "./pages/admin/Admin";
 import { CategoryPage, Categories, SearchPage } from "./pages/customer/Browse";
 import { Cart } from "./pages/customer/Cart";
 import { Checkout } from "./pages/customer/Checkout";
+import { Credits } from "./pages/customer/Credits";
 import { Home } from "./pages/customer/Home";
 import { Account, MyOrders, OrderPage } from "./pages/customer/Orders";
 import { ProductPage } from "./pages/customer/ProductPage";
@@ -44,6 +45,7 @@ function Routes() {
   } else if (path === "/pedidos") page = <MyOrders />;
   else if ((m = match("/pedido/:id", path))) page = <OrderPage key={m.id} id={m.id} />;
   else if (path === "/cuenta") page = <Account />;
+  else if (path === "/creditos") page = <Credits />;
 
   return <Shell tabBar={tabBar}>{page}</Shell>;
 }
