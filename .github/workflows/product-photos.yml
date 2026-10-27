@@ -1,0 +1,32 @@
+name: Product photos
+
+# Downloads the product photos listed in scripts/product-photos.txt
+# (one "<product-id> <url>" per line), resizes them to 600 px JPEGs and
+# commits them to public/products/<product-id>.jpg.
+on:
+  push:
+    branches: [main]
+    paths: [scripts/product-photos.txt, scripts/fetch-product-photos.py]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - run: python scripts/fetch-product-photos.py
+      - name: Commit photos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/products
+          if git diff --cached --quiet; then echo "No photo changes"; exit 0; fi
+          git commit -m "Update product photos"
+          git push

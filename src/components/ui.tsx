@@ -262,7 +262,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     <ToastContext.Provider value={show}>
       {children}
       {msg && (
-        <div key={msg.id} className="rise pointer-events-none fixed inset-x-0 z-[60] flex justify-center px-4 bottom-safe" role="status">
+        <div key={msg.id} className="rise pointer-events-none fixed inset-x-0 z-[60] flex justify-center px-4" style={{ top: "calc(env(safe-area-inset-top, 0px) + 12px)" }} role="status">
           <div className="flex max-w-[440px] items-center gap-2 rounded-2xl bg-fg px-4 py-3 text-sm font-semibold text-bg shadow-card">
             <Icon name="check" size={18} className="shrink-0 text-gold" strokeWidth={3} />
             <span className="line-clamp-2">{msg.text}</span>

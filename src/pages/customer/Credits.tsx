@@ -8,10 +8,10 @@ export function Credits() {
   const credited = products.filter((p) => photoCredits[p.id] && p.image === `/products/${p.id}.jpg`);
   return (
     <>
-      <PageHeader title="Créditos de fotos" subtitle="Imágenes de Wikimedia Commons" />
+      <PageHeader title="Créditos de fotos" subtitle="Fotos del catálogo" />
       <div className="gutter flex flex-col gap-4 py-5">
         <p className="text-sm text-muted">
-          Las fotos de referencia del catálogo son de Wikimedia Commons y se usan bajo las licencias indicadas. Tocá una para ver el original.
+          {credited.length === 0 ? "Las fotos del catálogo son propias de Super M." : "Algunas fotos son de Wikimedia Commons y se usan bajo las licencias indicadas. Tocá una para ver el original."}
         </p>
         <ul className="flex flex-col divide-y divide-line">
           {credited.map((p) => {

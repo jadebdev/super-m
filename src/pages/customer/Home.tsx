@@ -12,6 +12,9 @@ export function Home() {
   const [zoneOpen, setZoneOpen] = useState(false);
   const deals = products.filter((p) => discountPct(p) > 0 && p.stock);
   const favorites = products.filter((p) => p.featured);
+  const { orders } = useStore();
+  const boughtIds = [...new Set(orders.flatMap((o) => o.items.map((i) => i.productId)))];
+  const buyAgain = boughtIds.map((id) => products.find((p) => p.id === id)).filter((p): p is NonNullable<typeof p> => !!p && p.stock).slice(0, 10);
 
   return (
     <>
@@ -41,19 +44,19 @@ export function Home() {
         <button
           type="button"
           onClick={() => setZoneOpen(true)}
-          className="gutter flex w-full items-center gap-2 bg-red-deep py-2.5 text-left text-sm"
+          className="gutter -mt-1 flex w-full items-center gap-1.5 pb-2.5 text-left text-[13px] text-on-red/90"
         >
-          <Icon name="pin" size={18} className="shrink-0" />
+          <Icon name="pin" size={16} className="shrink-0" />
           <span className="min-w-0 flex-1 truncate">
             {totals.zone ? (
               <>
                 Entregar en <b>{totals.zone.name}</b> · envío {ars(totals.zone.fee)}
               </>
             ) : (
-              <b>Elegí tu barrio para ver el costo de envío</b>
+              <>Elegí tu barrio · <b>ver costo de envío</b></>
             )}
           </span>
-          <Icon name="down" size={18} className="shrink-0" />
+          <Icon name="down" size={16} className="shrink-0" />
         </button>
       </header>
       <ZonePicker open={zoneOpen} onClose={() => setZoneOpen(false)} />
@@ -117,6 +120,20 @@ export function Home() {
             </div>
             <div className="no-scrollbar gutter flex snap-x gap-3 overflow-x-auto scroll-px-4 pb-1">
               {deals.map((p) => (
+                <ProductCard key={p.id} product={p} wide />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Buy again */}
+        {buyAgain.length > 0 && (
+          <section className="flex flex-col gap-3">
+            <div className="gutter">
+              <SectionTitle title="Volver a comprar" action="Mis pedidos" to="/pedidos" />
+            </div>
+            <div className="no-scrollbar gutter flex snap-x gap-3 overflow-x-auto scroll-px-4 pb-1">
+              {buyAgain.map((p) => (
                 <ProductCard key={p.id} product={p} wide />
               ))}
             </div>
